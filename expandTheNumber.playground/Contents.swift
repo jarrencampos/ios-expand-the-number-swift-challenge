@@ -5,6 +5,7 @@ func expandTheNumber(_ number: Int) -> [Int] {
     let tens = (number / 10) % 10
     let hundreds = (number / 100) % 10
     let thousands = (number / 1000) % 10
+    let sum = ones + tens + hundreds + thousands
 //    print(thousands, hundreds, tens, ones)
     
     var numberArray: [Int] = []
@@ -18,8 +19,12 @@ func expandTheNumber(_ number: Int) -> [Int] {
     if tens >= 0 {
         numberArray.append(Int("\(tens)0")!)
     }
-    if ones > 0 {
+    if ones >= 0 {
         numberArray.append(ones)
+    }
+    if sum == 0 {
+        numberArray.removeAll()
+        numberArray.append(Int(0))
     }
 
     print(numberArray)
